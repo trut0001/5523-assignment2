@@ -1,0 +1,79 @@
+---
+title: "ETC5523 Assignment 2"
+author: Travis Rutledge 
+date: 27/08/2024 
+format: 
+  html: default
+  pdf: default
+theme:
+  light: flatly
+  dark: darkly
+
+---
+
+```{r setup, include = TRUE, echo = FALSE, cache = FALSE}
+
+# .qmd settings
+knitr::opts_chunk$set(
+  echo = TRUE,
+  eval = TRUE,
+  out.width = "70%",
+  fig.width = 8, 
+  fig.height = 6,
+  fig.retina = 3)
+```
+
+
+
+```{r libraries, message = FALSE, echo=FALSE, warning=FALSE, eval=TRUE}
+library(tidyverse)
+library(readr)
+library(hrbrthemes)
+library(dplyr)
+library(ggplot2)
+library(here)
+library(knitr) 
+```
+
+```{r load_dataset, message = FALSE, echo=FALSE, warning=FALSE, eval=TRUE}
+data <- read_csv(here::here("data", "medals.csv"))
+```
+
+# EXECUTIVE SUMMARY
+The purpose of this research is to explore which continents are more or less progressive in regards to the legalisation of same-sex marriage. I am doing this analysis because I am a part of the queer community, and I would like to learn more about what regions of the world are more inclusive of LGBTQ+ people. 
+
+# INTRODUCTION TO THE PROBLEM 
+For the Olympics, the current, official approach to tallying which country has won the most medals is by counting gold medal wins. Although silver and bronze medals are recorded, they are not tallied in the final count for which country won the most gold medals. A problem with this is that athletes who won silver and bronze medals do not have their medals counted towards their country. They may feel personal success for reprsenting their country and winning a medal, but their achievement is not counted towards the official tally. The United States and their media outlets report all medals earned, as they view it important to tally both gold medals own and total medals won[source](https://www.theguardian.com/sport/article/2024/aug/10/paris-olympics-2024-how-does-medal-tally-work-order). But, this is not how the rest of the world and the Olympic committee tally the results.
+
+Others have proposed another way to ranking countries performance at the Olympics. Researchers Robert C Duncan and Andrew Parece published their own ranking method in the Journal of Sports Analytics that accounts for a country's probability of winning a medal if populations were all the same across countries. This approach was dubbed the "Duncan-Parece model". Although this calculation is useful in addressing population, the downside is that it may be difficult for the public to both understand and trust a calculation that is based on probability and weighting.
+
+# KEY RESULTS 
+## Introduction of a new measure - weighted medal score 
+The goal is to create a new measure of tallying Olympic results per country that accomplishes three things:
+1. It is inclusive of all medals won 
+2. It prioritises gold medals won
+3. It is simple to understand by the public
+
+My proposed calculation is called the Weighted Medal Score (coloquially dubbed "Olympic Points"). The calculation gives 3 points to gold medals, 2 points to silver medals, and 1 point to bronze medals and then totals the scores for each country. The final score for each country is not the total count of all medals. Instead, it's a weighted score showing how productive a country is in winning medals.
+
+The benefits of this new calculation is that it _______.
+
+The biggest risk or limtiation of this measure is that it requires the public to shift their previous understanding of tallying countries' performance from medals to points. The public may be confused at first as to what a point or score means, and they might assume that the score is simply a medal count. To address this risk, the Weighted Medal Score will be visualised alongside medal counts. That way, the public will have a better opportunity to learn what the calculation is, how it is measured, and they can still refer to the previous way to tally results by looking at the medal counts. 
+
+
+
+## Figure 
+
+```{r variable_names, messsage = FALSE, echo=FALSE, warning=FALSE, eval=FALSE}
+#| label: tbl-1
+#| tbl-cap: "Variable Names of the LGBTQ+ Dataset"
+kable(data[25:30,])
+```
+
+# METHODS 
+## Data Source 
+
+## Data Dictionary 
+
+# CONCLUSION 
+

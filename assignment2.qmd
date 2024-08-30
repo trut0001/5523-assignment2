@@ -36,7 +36,7 @@ library(knitr)
 ```
 
 ```{r load_dataset, message = FALSE, echo=FALSE, warning=FALSE, eval=TRUE}
-data <- read_csv(here::here("data", "medals.csv"))
+medals <- read_csv(here::here("data", "medals.csv"))
 ```
 
 # EXECUTIVE SUMMARY
@@ -50,6 +50,7 @@ Others have proposed another way to ranking countries performance at the Olympic
 # KEY RESULTS 
 ## Introduction of a new measure - weighted medal score 
 The goal is to create a new measure of tallying Olympic results per country that accomplishes three things:
+
 1. It is inclusive of all medals won 
 2. It prioritises gold medals won
 3. It is simple to understand by the public
@@ -63,6 +64,29 @@ The biggest risk or limtiation of this measure is that it requires the public to
 
 
 ## Figure 
+
+```{r bar_chart}
+medals_with_score <- medals %>%
+  mutate(Score = (G*3) + (S*2) + (B*1))
+         
+bar_chart <- medals_with_score %>%
+  filter(Score > 50) %>%
+  mutate(Country = factor(Country, levels = Country[order(Score, decreasing = FALSE)])) %>%
+  ggplot(aes(x = Score, y = Country)) + 
+  geom_bar(stat = "identity") + 
+  geom_text(aes(label = Score),
+            hjust = -.2,
+            color = "black",
+            size = 3.5) +
+  theme_minimal() +
+  theme(panel.grid = element_blank(),
+        axis.title.x = element_blank(),
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        axis.lines.x = element_blank()
+  )
+```
+
 
 ```{r variable_names, messsage = FALSE, echo=FALSE, warning=FALSE, eval=FALSE}
 #| label: tbl-1

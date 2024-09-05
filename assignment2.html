@@ -22,40 +22,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -87,8 +53,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#introduction-to-the-problem" id="toc-introduction-to-the-problem" class="nav-link" data-scroll-target="#introduction-to-the-problem">INTRODUCTION TO THE PROBLEM</a></li>
   <li><a href="#key-results" id="toc-key-results" class="nav-link" data-scroll-target="#key-results">KEY RESULTS</a>
   <ul class="collapse">
-  <li><a href="#introduction-of-a-new-measure---weighted-total-score" id="toc-introduction-of-a-new-measure---weighted-total-score" class="nav-link" data-scroll-target="#introduction-of-a-new-measure---weighted-total-score">Introduction of a new measure - Weighted Total Score</a></li>
-  <li><a href="#figure" id="toc-figure" class="nav-link" data-scroll-target="#figure">Figure</a></li>
+  <li><a href="#weighted-total-score" id="toc-weighted-total-score" class="nav-link" data-scroll-target="#weighted-total-score">Weighted Total Score</a></li>
+  <li><a href="#figures" id="toc-figures" class="nav-link" data-scroll-target="#figures">Figures</a></li>
   </ul></li>
   <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">METHODS</a>
   <ul class="collapse">
@@ -134,785 +100,104 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="executive-summary" class="level1">
 <h1>EXECUTIVE SUMMARY</h1>
-<p>Our team is proposing a new way to measure Olympic performance called Weighted Total Score, which gives a country 3 points for a winning a gold medal, 2 points for a silver, and 1 point for a bronze. The benefit of this measure is that it is inclusive of all medals won while scaling based type of medal. A limitation of this measure is the potential difficulty of the public adopting a new measure. To help with this, the new Weighted Total measure can be visualised alongside medal counts to provide clarity and familiarity.</p>
+<p>It is recommended to introduce a new way of measuring countries’ Olympic performance called Weighted Total Score, which gives countries 3 points for a winning a gold medal, 2 points for a silver, and 1 point for a bronze. The benefit of this measure is that it is inclusive of all medals won while placing importance of gold medals over silver medals over bronze medals. A limitation of this measure is that it is potentially difficult for the public to adopt a new way of measuring Olympic performance.</p>
 </section>
 <section id="introduction-to-the-problem" class="level1">
 <h1>INTRODUCTION TO THE PROBLEM</h1>
-<p>The International Olympic Committee’s (IOC) current approach to measuring a country’s Olympic performance is tallying gold medals. Put simply, whichever country wins the most gold medals is determined to be the winner of the Olymipc games. While silver and bronze medals are recorded, they are not considered unless two countries are tied with gold medals.</p>
-<p>There are two problems with the IOC’s current approach to determining the winner of the Olympic games:</p>
+<p>The International Olympic Committee’s (IOC) current approach to measuring a country’s Olympic performance is tallying gold medals. Put simply, whichever country wins the most gold medals is determined to be the winner of the Olympic games. While silver and bronze medals are recorded, they are not considered in the final tally unless two countries are tied with gold medals.</p>
+<p>It can be argued that there are two problems with the IOC’s current approach to measuring Olympic performance:</p>
 <ol type="1">
-<li>In most cases, athletes who won silver and bronze medals do not have their medals counted towards their country. They might win a medal, but their achievement is not used to represent their country unless there is a tie of gold medals. The three values of the Olympics are excellence, respect, and friendship <a href="https://olympics.com/ioc/olympic-values">source</a>. Is the IOC appropriately measuring excellence and respecting athletes by ignoring silver and bronze medals in most circumstances.</li>
-<li>Tallying gold medals and not other medals is not a comprehensive look at the performance of a country. A country may win dozens of silver and bronze medals and no gold medals, and they would be ranked as one of the weakest country’s in the games. Some countries like the United States and their media outlets report all medals earned, as they view it important to tally both gold medals own and total medals won<a href="https://www.theguardian.com/sport/article/2024/aug/10/paris-olympics-2024-how-does-medal-tally-work-order">source</a>. But, this is not how the IOC tallies results.</li>
+<li><strong>It is disrespectful to athletes who win silver and bronze medals.</strong> In most cases, athletes who won silver and bronze medals do not have their medals counted towards their country’s tally. An athlete might win a silver or bronze medal, but their achievement does not represent their country unless there is a tie for gold medals. One of the three values of the Olympics is Respect.<a href="https://olympics.com/ioc/olympic-values">source</a>. And, it can be argued that the IOC is not sufficiently respecting their athletes by ignoring those who win silver and bronze medals.</li>
+<li><strong>Tallying only gold medals is not a comprehensive look at athletic excellence.</strong> A country may win numerous silver and bronze medals, but if they win no gold medals then they would be ranked as one of the weakest countries in the Olympic games. Of the 184 countries who competed in the 2024 Olympic Games, 144 did not earn a gold medal. In other words, 78% of all countries who competed in the Olympics were not considered in the final results. Along with Respect, another value of the Olympic games is Excellence. It can be argued that the IOC is not sufficiency measuring excellence by ignoring silver and bronze medal wins. Some countries, like the United States, report all medals earned in their news and media<a href="https://www.theguardian.com/sport/article/2024/aug/10/paris-olympics-2024-how-does-medal-tally-work-order">source</a>. But, this is not how the IOC tallies results.</li>
 </ol>
-<p>Others have proposed another way to ranking countries performance at the Olympics. Researchers Robert C Duncan and Andrew Parece published their own ranking method in the Journal of Sports Analytics that accounts for a country’s probability of winning a medal if populations were all the same across countries. This approach was dubbed the “Duncan-Parece model”. Although this calculation is useful in addressing population, the downside is that it may be difficult for the public to both understand and trust a calculation that is based on probability and weighting.</p>
+<p>Some have proposed other ways to rank country performance at the Olympics. Researchers Robert C Duncan and Andrew Parece published their own ranking method in the Journal of Sports Analytics that accounts for a country’s probability of winning a medal if populations were all the same across countries. This approach was dubbed the “Duncan-Parece model”. Although this calculation is useful in addressing population, the primary limitation is that it may be difficult for the public to both understand and trust a calculation that is based on probability calculations.</p>
 </section>
 <section id="key-results" class="level1">
 <h1>KEY RESULTS</h1>
-<section id="introduction-of-a-new-measure---weighted-total-score" class="level2">
-<h2 class="anchored" data-anchor-id="introduction-of-a-new-measure---weighted-total-score">Introduction of a new measure - Weighted Total Score</h2>
-<p>The goal is to create a new measure of tallying Olympic results per country that accomplishes three things:</p>
+<section id="weighted-total-score" class="level2">
+<h2 class="anchored" data-anchor-id="weighted-total-score">Weighted Total Score</h2>
+<p>To address these problems, it is recommended to introduce a new measure called Weighted Total Score (colloquially dubbed “Olympic Points”), which would provide a final score for each country where a gold medal earns 3 points, a silver medal earns 2 points, and a bronze medals earns 1 point. For example, if Australia won 10 gold, 5 silver, and 1 bronze, then the country’s Weighted Total Score would equal 41 (30 gold + 10 silver + 1 bronze). There are two benefits of this new measure. First, unlike IOC’s current approach, it is inclusive of all medals while while prioritising the achievement of gold over silver over bronze. Second, it is easier for the public to understand compared to other suggested new measures like the Duncan-Parece model.</p>
+<p>The main limitation of this new calcuation is that it requires the public to shift their previous understanding of measuring Olympic performance from a medal count to a medal score. The public may be confused at first as to what the Weighted Total Score means, and they might assume that the score is a count. To mitigate this risk, it is recommended to do three things:</p>
 <ol type="1">
-<li>It is inclusive of all medals won</li>
-<li>It prioritises gold medals won</li>
-<li>It is simple to understand by the public</li>
+<li><strong>Add the Weighted Total Score to existing visualisations of medal counts.</strong> In doing this, the public will have a better opportunity to learn what the calculation is while referring to something familiar. They will see an addition of a new measure and not a replacement.</li>
+<li><strong>Visually signify that the Weighted Total Score is different from the existing measures.</strong> This delineation could be done through bolding, highlighting, colour choice, or a line separator. The purpose of this is to draw attention to the new measure and indicate that it is different from medal counts.</li>
+<li><strong>Add concise language that defines the new measure and explains why it was introduced</strong>. This language should be placed above the visualisation so that the audience can have context before viewing the visualisation.</li>
 </ol>
-<p>My proposed calculation is called the Weighted Medal Score (coloquially dubbed “Olympic Points”). The calculation gives 3 points to gold medals, 2 points to silver medals, and 1 point to bronze medals and then totals the scores for each country. The final score for each country is not the total count of all medals. Instead, it’s a weighted score showing how productive a country is in winning medals.</p>
-<p>The benefits of this new calculation is that it _______.</p>
-<p>The biggest risk or limtiation of this measure is that it requires the public to shift their previous understanding of tallying countries’ performance from medals to points. The public may be confused at first as to what a point or score means, and they might assume that the score is simply a medal count. To address this risk, the Weighted Medal Score will be visualised alongside medal counts. That way, the public will have a better opportunity to learn what the calculation is, how it is measured, and they can still refer to the previous way to tally results by looking at the medal counts.</p>
 </section>
-<section id="figure" class="level2">
-<h2 class="anchored" data-anchor-id="figure">Figure</h2>
+<section id="figures" class="level2">
+<h2 class="anchored" data-anchor-id="figures">Figures</h2>
+<p><a href="https://olympics.com/en/paris-2024/medals">Olympics.com</a> visualises medal counts using a table, sorting countries based off of who won the most gold medals. Although the IOC does not use the total medals in their final tally, it is interesting to note that they include it in their table. Below is a screenshot of their visualisation, captured on 5 September, 2024:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>medals_with_score <span class="ot">&lt;-</span> medals <span class="sc">%&gt;%</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Gold =</span> G, <span class="at">Silver =</span> S, <span class="at">Bronze =</span> B) <span class="sc">%&gt;%</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">"Weighted Total Score"</span> <span class="ot">=</span> (Gold <span class="sc">*</span> <span class="dv">3</span>) <span class="sc">+</span> (Silver <span class="sc">*</span> <span class="dv">2</span>) <span class="sc">+</span> (Bronze <span class="sc">*</span> <span class="dv">1</span>))</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>medals_with_score_table <span class="ot">&lt;-</span> medals_with_score <span class="sc">%&gt;%</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Country, <span class="st">"Weighted Total Score"</span>, Total, Gold, Silver, Bronze)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(medals_with_score_table, <span class="at">format =</span> <span class="st">"html"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">12</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">kable_styling</span>(<span class="at">html_font =</span> <span class="st">"Arial"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="data/ioc_medal_table.png" class="img-fluid figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: 2024 Olympic Medal Table from olympics.com
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><br></p>
+<p>Below is a similar table with the addition of the Weighted Total Score:</p>
+<div class="cell">
 <div class="cell-output-display">
 <table class="table caption-top table-sm table-striped small" data-quarto-postprocess="true">
+<caption><span style="font-size: 16px; font-weight: bold;">2024 Olympic Medal Table</span><br>
+<span style="font-size: 14px;">Weighted Total Score calculated as 3 points for Gold, 2 for Silver, and 1 for Bronze</span></caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">Country</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">Weighted Total Score</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Total</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">Gold</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">Silver</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">Bronze</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Total</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">United States</td>
-<td style="text-align: right;">250</td>
-<td style="text-align: right;">126</td>
+<td style="text-align: right; font-weight: bold;">250</td>
 <td style="text-align: right;">40</td>
 <td style="text-align: right;">44</td>
 <td style="text-align: right;">42</td>
+<td style="text-align: right;">126</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">China</td>
-<td style="text-align: right;">198</td>
-<td style="text-align: right;">91</td>
+<td style="text-align: right; font-weight: bold;">198</td>
 <td style="text-align: right;">40</td>
 <td style="text-align: right;">27</td>
 <td style="text-align: right;">24</td>
+<td style="text-align: right;">91</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Great Britain</td>
-<td style="text-align: right;">115</td>
-<td style="text-align: right;">65</td>
-<td style="text-align: right;">14</td>
-<td style="text-align: right;">22</td>
-<td style="text-align: right;">29</td>
-</tr>
-<tr class="even">
 <td style="text-align: left;">France</td>
-<td style="text-align: right;">122</td>
-<td style="text-align: right;">64</td>
+<td style="text-align: right; font-weight: bold;">122</td>
 <td style="text-align: right;">16</td>
 <td style="text-align: right;">26</td>
 <td style="text-align: right;">22</td>
+<td style="text-align: right;">64</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Australia</td>
-<td style="text-align: right;">108</td>
+<td style="text-align: right; font-weight: bold;">108</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">16</td>
 <td style="text-align: right;">53</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">19</td>
-<td style="text-align: right;">16</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Japan</td>
-<td style="text-align: right;">97</td>
+<td style="text-align: right; font-weight: bold;">97</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">13</td>
 <td style="text-align: right;">45</td>
-<td style="text-align: right;">20</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">13</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Italy</td>
-<td style="text-align: right;">77</td>
-<td style="text-align: right;">40</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">13</td>
-<td style="text-align: right;">15</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Netherlands</td>
-<td style="text-align: right;">71</td>
-<td style="text-align: right;">34</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">12</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Germany</td>
-<td style="text-align: right;">70</td>
-<td style="text-align: right;">33</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">13</td>
-<td style="text-align: right;">8</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">South Korea</td>
-<td style="text-align: right;">67</td>
-<td style="text-align: right;">32</td>
-<td style="text-align: right;">13</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">10</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Canada</td>
-<td style="text-align: right;">52</td>
-<td style="text-align: right;">27</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">11</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">New Zealand</td>
-<td style="text-align: right;">47</td>
-<td style="text-align: right;">20</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">3</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Brazil</td>
-<td style="text-align: right;">33</td>
-<td style="text-align: right;">20</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">10</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Hungary</td>
-<td style="text-align: right;">38</td>
-<td style="text-align: right;">19</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">6</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Spain</td>
-<td style="text-align: right;">32</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">9</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Uzbekistan</td>
-<td style="text-align: right;">31</td>
-<td style="text-align: right;">13</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">3</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Iran</td>
-<td style="text-align: right;">24</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">3</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Ukraine</td>
-<td style="text-align: right;">23</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">4</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Sweden</td>
-<td style="text-align: right;">23</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">3</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Kenya</td>
-<td style="text-align: right;">21</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">5</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Belgium</td>
-<td style="text-align: right;">17</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">6</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Poland</td>
-<td style="text-align: right;">16</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">5</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Romania</td>
-<td style="text-align: right;">19</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Denmark</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">5</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Cuba</td>
-<td style="text-align: right;">14</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">6</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Norway</td>
-<td style="text-align: right;">17</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">3</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Switzerland</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">5</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Greece</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">6</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Turkey</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">5</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Ireland</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">3</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Georgia</td>
-<td style="text-align: right;">16</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Bulgaria</td>
-<td style="text-align: right;">14</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">3</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Croatia</td>
-<td style="text-align: right;">13</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">3</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Azerbaijan</td>
-<td style="text-align: right;">13</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">3</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Chinese Taipei</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">5</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Israel</td>
-<td style="text-align: right;">14</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Kazakhstan</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">3</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Thailand</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">South Africa</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Jamaica</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">North Korea</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">4</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Kyrgyzstan</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">4</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">India</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">5</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Serbia</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Czechia</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Austria</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">3</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Ecuador</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Mexico</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Bahrain</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Philippines</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Hong Kong</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Ethiopia</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Portugal</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Colombia</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Armenia</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Lithuania</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Moldova</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">3</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Slovenia</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Indonesia</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Algeria</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Tunisia</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Egypt</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Argentina</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Dominican Republic</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Tajikistan</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">3</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Uganda</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Saint Lucia</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Botswana</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Chile</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Morocco</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Guatemala</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Kosovo</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Malaysia</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Grenada</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Albania</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Puerto Rico</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Dominica</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Pakistan</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Panama</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Jordan</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Mongolia</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Fiji</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Cyprus</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Refugee Olympic Team</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Zambia</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Singapore</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Qatar</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Peru</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Cape Verde</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Ivory Coast</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Slovakia</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
 </tr>
 </tbody>
 </table>
@@ -920,60 +205,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>gold_bar_chart <span class="ot">&lt;-</span> medals_with_score <span class="sc">%&gt;%</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(G <span class="sc">&gt;</span><span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Country =</span> <span class="fu">factor</span>(Country, <span class="at">levels =</span> Country[<span class="fu">order</span>(G, <span class="at">decreasing =</span> <span class="cn">FALSE</span>)])) <span class="sc">%&gt;%</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> G, <span class="at">y =</span> Country)) <span class="sc">+</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> Score),</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">hjust =</span> <span class="sc">-</span>.<span class="dv">2</span>,</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> <span class="st">"gold"</span>,</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">size =</span> <span class="fl">3.5</span>) <span class="sc">+</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title.x =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.line.x =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"China and the United States won the most gold medals at the 2024 Olympics"</span>)</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>bar_chart <span class="ot">&lt;-</span> medals_with_score <span class="sc">%&gt;%</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Score <span class="sc">&gt;</span> <span class="dv">50</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Country =</span> <span class="fu">factor</span>(Country, <span class="at">levels =</span> Country[<span class="fu">order</span>(Score, <span class="at">decreasing =</span> <span class="cn">FALSE</span>)])) <span class="sc">%&gt;%</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Score, <span class="at">y =</span> Country)) <span class="sc">+</span> </span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span> </span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> Score),</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>            <span class="at">hjust =</span> <span class="sc">-</span>.<span class="dv">2</span>,</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> <span class="st">"grey"</span>,</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>            <span class="at">size =</span> <span class="fl">3.5</span>) <span class="sc">+</span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title.x =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.line.x =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"The United States leads in the Medal Count Score"</span>,</span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Gold medal = 3 points, silver medal = 2 points, bronze = 1 point"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="tbl-1" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-messsage="false">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;1: Variable Names of the LGBTQ+ Dataset
-</figcaption>
-<div aria-describedby="tbl-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div>
-
-</div>
-</div>
-</figure>
-</div>
 </section>
 </section>
 <section id="methods" class="level1">
 <h1>METHODS</h1>
 <section id="data-source" class="level2">
 <h2 class="anchored" data-anchor-id="data-source">Data Source</h2>
+<p>Data was captured from the <a href="https://olympics.com/en/paris-2024/medals">olympics.com website</a> on 30 August, 2024. The webpage the data wwas pulled from includes a large table showing every country who earned at least one medal in the 2024 Olympics held in Paris. The table provides information on the number of gold, silver, and bronze wins for each country. Because the data was captured directly from the Olympics website, there is little to no concern about data quality. The data is complete and has no missing values. The data variables included Order, NOC, Gold, Silver, Bronze, and Total.</p>
 </section>
 <section id="data-dictionary" class="level2">
 <h2 class="anchored" data-anchor-id="data-dictionary">Data Dictionary</h2>

@@ -1,14 +1,28 @@
 ---
 title: "ETC5523 Assignment 2"
 author: Travis Rutledge 
-date: 27/08/2024 
-format: 
-  html: default
-  pdf: default
-theme:
-  light: flatly
-  dark: darkly
-
+date: "2024-09-05"
+format:
+  html:
+    toc: true
+    toc_float: true
+    toc_depth: 2
+    number_sections: true
+    theme: flatly
+    highlight: tango
+    bibliography: reference.bib
+  pdf:
+    toc: true
+    toc_depth: 2
+    number_sections: true
+    highlight: tango
+    latex_engine: pdflatex
+    fig_caption: true
+    bibliography: reference.bib
+editor: 
+  markdown: 
+    wrap: sentence
+latex_engine: pdflatex
 ---
 
 ```{r setup, include = TRUE, echo = FALSE, cache = FALSE}
@@ -33,6 +47,7 @@ library(dplyr)
 library(ggplot2)
 library(here)
 library(knitr) 
+library(kableExtra)
 ```
 
 ```{r load_dataset, message = FALSE, echo=FALSE, warning=FALSE, eval=TRUE}
@@ -44,17 +59,17 @@ Our team is proposing a new way to measure Olympic performance called Weighted T
 
 
 # INTRODUCTION TO THE PROBLEM 
-The current approach to measuring a country's Olympic performance is counting gold medals. In other words, whichever country wins the most gold medals is determined to be the top performer for the games. While silver and bronze medals are recorded and visualised, they are not considered unless two countries are tied on medal count. And, although this approach is great in its' simplicity, it does have its problems. 
+The International Olympic Committee's (IOC) current approach to measuring a country's Olympic performance is tallying gold medals. Put simply, whichever country wins the most gold medals is determined to be the winner of the Olymipc games. While silver and bronze medals are recorded, they are not considered unless two countries are tied with gold medals.
 
-There are two problems with the IOC's current approach to counting gold medals and only looking at silver and bronze when there is a tie:
+There are two problems with the IOC's current approach to determining the winner of the Olympic games:
 
-1. Athletes who won silver and bronze medals do not have their medals counted towards their country. They may feel personal success for reprsenting their country and winning a medal, but their achievement is not counted towards the official tally unless there is a tie for gold medals. 
-2. Some argue that only tallying gold medals and not other medals is not a comprehensive look at the performance of a country. A country may win dozens of silver and bronze medals and no gold medals, and they would be ranked as one of the weakest country's in the games. Some countries like the United States and their media outlets report all medals earned, as they view it important to tally both gold medals own and total medals won[source](https://www.theguardian.com/sport/article/2024/aug/10/paris-olympics-2024-how-does-medal-tally-work-order). But, this is not how the IOC tallies results.
+1. In most cases, athletes who won silver and bronze medals do not have their medals counted towards their country. They might win a medal, but their achievement is not used to represent their country unless there is a tie of gold medals. The three values of the Olympics are excellence, respect, and friendship [source](https://olympics.com/ioc/olympic-values). Is the IOC appropriately measuring excellence and respecting athletes by ignoring silver and bronze medals in most circumstances.
+2. Tallying gold medals and not other medals is not a comprehensive look at the performance of a country. A country may win dozens of silver and bronze medals and no gold medals, and they would be ranked as one of the weakest country's in the games. Some countries like the United States and their media outlets report all medals earned, as they view it important to tally both gold medals own and total medals won[source](https://www.theguardian.com/sport/article/2024/aug/10/paris-olympics-2024-how-does-medal-tally-work-order). But, this is not how the IOC tallies results.
 
 Others have proposed another way to ranking countries performance at the Olympics. Researchers Robert C Duncan and Andrew Parece published their own ranking method in the Journal of Sports Analytics that accounts for a country's probability of winning a medal if populations were all the same across countries. This approach was dubbed the "Duncan-Parece model". Although this calculation is useful in addressing population, the downside is that it may be difficult for the public to both understand and trust a calculation that is based on probability and weighting.
 
 # KEY RESULTS 
-## Introduction of a new measure - weighted medal score 
+## Introduction of a new measure - Weighted Total Score 
 The goal is to create a new measure of tallying Olympic results per country that accomplishes three things:
 
 1. It is inclusive of all medals won 
@@ -71,10 +86,21 @@ The biggest risk or limtiation of this measure is that it requires the public to
 
 ## Figure 
 
-```{r bar_chart}
+```{r medal_tables, eval = TRUE}
 medals_with_score <- medals %>%
-  mutate(Score = (G*3) + (S*2) + (B*1))
-        
+  rename(Gold = G, Silver = S, Bronze = B) %>%
+  mutate("Weighted Total Score" = (Gold * 3) + (Silver * 2) + (Bronze * 1))
+
+medals_with_score_table <- medals_with_score %>%
+  select(Country, "Weighted Total Score", Total, Gold, Silver, Bronze)
+  
+kable(medals_with_score_table, format = "html") %>%
+kable_styling(font_size = 12) %>%
+kable_styling(html_font = "Arial") 
+```
+
+
+```{r bar_charts, eval = FALSE}
 gold_bar_chart <- medals_with_score %>%
   filter(G >10) %>%
   mutate(Country = factor(Country, levels = Country[order(G, decreasing = FALSE)])) %>%
@@ -110,7 +136,6 @@ bar_chart <- medals_with_score %>%
   labs(title = "The United States leads in the Medal Count Score",
        subtitle = "Gold medal = 3 points, silver medal = 2 points, bronze = 1 point")
 ```
-
 
 ```{r variable_names, messsage = FALSE, echo=FALSE, warning=FALSE, eval=FALSE}
 #| label: tbl-1

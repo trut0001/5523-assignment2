@@ -40,10 +40,16 @@ medals <- read_csv(here::here("data", "medals.csv"))
 ```
 
 # EXECUTIVE SUMMARY
-The purpose of this research is to explore which continents are more or less progressive in regards to the legalisation of same-sex marriage. I am doing this analysis because I am a part of the queer community, and I would like to learn more about what regions of the world are more inclusive of LGBTQ+ people. 
+Our team is proposing a new way to measure Olympic performance called Weighted Total Score, which gives a country 3 points for a winning a gold medal, 2 points for a silver, and 1 point for a bronze. The benefit of this measure is that it is inclusive of all medals won while scaling based type of medal. A limitation of this measure is the potential difficulty of the public adopting a new measure. To help with this, the new Weighted Total measure can be visualised alongside medal counts to provide clarity and familiarity. 
+
 
 # INTRODUCTION TO THE PROBLEM 
-For the Olympics, the current, official approach to tallying which country has won the most medals is by counting gold medal wins. Although silver and bronze medals are recorded, they are not tallied in the final count for which country won the most gold medals. A problem with this is that athletes who won silver and bronze medals do not have their medals counted towards their country. They may feel personal success for reprsenting their country and winning a medal, but their achievement is not counted towards the official tally. The United States and their media outlets report all medals earned, as they view it important to tally both gold medals own and total medals won[source](https://www.theguardian.com/sport/article/2024/aug/10/paris-olympics-2024-how-does-medal-tally-work-order). But, this is not how the rest of the world and the Olympic committee tally the results.
+The current approach to measuring a country's Olympic performance is counting gold medals. In other words, whichever country wins the most gold medals is determined to be the top performer for the games. While silver and bronze medals are recorded and visualised, they are not considered unless two countries are tied on medal count. And, although this approach is great in its' simplicity, it does have its problems. 
+
+There are two problems with the IOC's current approach to counting gold medals and only looking at silver and bronze when there is a tie:
+
+1. Athletes who won silver and bronze medals do not have their medals counted towards their country. They may feel personal success for reprsenting their country and winning a medal, but their achievement is not counted towards the official tally unless there is a tie for gold medals. 
+2. Some argue that only tallying gold medals and not other medals is not a comprehensive look at the performance of a country. A country may win dozens of silver and bronze medals and no gold medals, and they would be ranked as one of the weakest country's in the games. Some countries like the United States and their media outlets report all medals earned, as they view it important to tally both gold medals own and total medals won[source](https://www.theguardian.com/sport/article/2024/aug/10/paris-olympics-2024-how-does-medal-tally-work-order). But, this is not how the IOC tallies results.
 
 Others have proposed another way to ranking countries performance at the Olympics. Researchers Robert C Duncan and Andrew Parece published their own ranking method in the Journal of Sports Analytics that accounts for a country's probability of winning a medal if populations were all the same across countries. This approach was dubbed the "Duncan-Parece model". Although this calculation is useful in addressing population, the downside is that it may be difficult for the public to both understand and trust a calculation that is based on probability and weighting.
 
@@ -68,7 +74,24 @@ The biggest risk or limtiation of this measure is that it requires the public to
 ```{r bar_chart}
 medals_with_score <- medals %>%
   mutate(Score = (G*3) + (S*2) + (B*1))
-         
+        
+gold_bar_chart <- medals_with_score %>%
+  filter(G >10) %>%
+  mutate(Country = factor(Country, levels = Country[order(G, decreasing = FALSE)])) %>%
+  ggplot(aes(x = G, y = Country)) +
+  geom_bar(stat = "identity") +
+  geom_text(aes(label = Score),
+            hjust = -.2,
+            color = "gold",
+            size = 3.5) +
+  theme_minimal() +
+  theme(panel.grid = element_blank(),
+        axis.title.x = element_blank(),
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        axis.line.x = element_blank()) +
+  labs(title = "China and the United States won the most gold medals at the 2024 Olympics")
+
 bar_chart <- medals_with_score %>%
   filter(Score > 50) %>%
   mutate(Country = factor(Country, levels = Country[order(Score, decreasing = FALSE)])) %>%
@@ -76,15 +99,16 @@ bar_chart <- medals_with_score %>%
   geom_bar(stat = "identity") + 
   geom_text(aes(label = Score),
             hjust = -.2,
-            color = "black",
+            color = "grey",
             size = 3.5) +
   theme_minimal() +
   theme(panel.grid = element_blank(),
         axis.title.x = element_blank(),
         axis.text.x = element_blank(),
         axis.ticks.x = element_blank(),
-        axis.lines.x = element_blank()
-  )
+        axis.line.x = element_blank()) +
+  labs(title = "The United States leads in the Medal Count Score",
+       subtitle = "Gold medal = 3 points, silver medal = 2 points, bronze = 1 point")
 ```
 
 

@@ -55,13 +55,13 @@ medals <- read_csv(here::here("data", "medals.csv"))
 ```
 
 # EXECUTIVE SUMMARY
-Our team is proposing a new way to measure Olympic performance called Weighted Total Score, which gives a country 3 points for a winning a gold medal, 2 points for a silver, and 1 point for a bronze. The benefit of this measure is that it is inclusive of all medals won while scaling based type of medal. A limitation of this measure is the potential difficulty of the public adopting a new measure. To help with this, the new Weighted Total measure can be visualised alongside medal counts to provide clarity and familiarity. 
+It is recommended to introduce a new way to measure a country's performance at the Olympic Games called Weighted Total Score, which gives a country 3 points for a winning a gold medal, 2 points for a silver, and 1 point for a bronze. The benefit of this measure is that it is inclusive of all medals won while still prioritising gold medal wins. A limitation of this measure is the potential difficulty in getting the public to adopt a new way of looking at Olympic performance. 
 
 
 # INTRODUCTION TO THE PROBLEM 
 The International Olympic Committee's (IOC) current approach to measuring a country's Olympic performance is tallying gold medals. Put simply, whichever country wins the most gold medals is determined to be the winner of the Olymipc games. While silver and bronze medals are recorded, they are not considered unless two countries are tied with gold medals.
 
-There are two problems with the IOC's current approach to determining the winner of the Olympic games:
+It can be argued that there are two problems with the IOC's current approach to measuring Olympic performance:
 
 1. In most cases, athletes who won silver and bronze medals do not have their medals counted towards their country. They might win a medal, but their achievement is not used to represent their country unless there is a tie of gold medals. The three values of the Olympics are excellence, respect, and friendship [source](https://olympics.com/ioc/olympic-values). Is the IOC appropriately measuring excellence and respecting athletes by ignoring silver and bronze medals in most circumstances.
 2. Tallying gold medals and not other medals is not a comprehensive look at the performance of a country. A country may win dozens of silver and bronze medals and no gold medals, and they would be ranked as one of the weakest country's in the games. Some countries like the United States and their media outlets report all medals earned, as they view it important to tally both gold medals own and total medals won[source](https://www.theguardian.com/sport/article/2024/aug/10/paris-olympics-2024-how-does-medal-tally-work-order). But, this is not how the IOC tallies results.
